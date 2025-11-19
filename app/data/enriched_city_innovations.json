@@ -1,0 +1,20 @@
+[
+  {
+    "city": "Barcelona",
+    "focus_area": "Smart Mobility",
+    "headline": "Barcelona acelera smart mobility",
+    "insight": "Barcelona is piloting a fleet of autonomous electric shuttles that serve night routes during large cultural events. Sensors monitor ridership, and city dashboards adjust deployment to minimize congestion while keeping emissions low"
+  },
+  {
+    "city": "São Paulo",
+    "focus_area": "Urban Farming",
+    "headline": "São Paulo acelera urban farming",
+    "insight": "To relieve food deserts during sports tournaments, São Paulo is transforming vacant lots into modular hydroponic hubs. Data collected from IoT nutrient probes help agronomists rebalance crops daily and redistribute harvests to temporary fan zones"
+  },
+  {
+    "city": "Tokyo",
+    "focus_area": "Circular Economy",
+    "headline": "Tokyo acelera circular economy",
+    "insight": "Tokyo's 2025 expo grounds will feature refill stations that gamify waste sorting. RFID wristbands register each attendee's recycling streak and award transit credits, encouraging low-carbon travel throughout the city"
+  }
+]

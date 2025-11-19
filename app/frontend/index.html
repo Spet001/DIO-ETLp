@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Sustainability Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link id="theme-styles" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="glow"></div>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Santander Dev Week · ETL Reinventado</p>
+        <h1>Sustainable Host Cities Radar</h1>
+      </div>
+      <button id="triggerEtl" class="primary">
+        <span>Atualizar com IA</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14m-4-4 4 4-4 4" />
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p>
+          Este painel extrai iniciativas de sustentabilidade urbana, transforma os textos
+          com a API da Hugging Face e entrega resumos energizados para usar em pitch decks,
+          dashboards ou huddles técnicos.
+        </p>
+        <div class="status" id="statusBanner">Pipeline pronto para brilhar.</div>
+      </section>
+
+      <section class="grid" id="insightsGrid"></section>
+    </main>
+
+    <footer>
+      <p>
+        Feito com FastAPI + animações CSS. Inspire-se e replique no seu portfólio.
+      </p>
+      <a href="https://www.dio.me/" target="_blank" rel="noopener" class="link"
+        >Ver comunidade DIO →</a
+      >
+    </footer>
+
+    <script>
+      (function () {
+        const joinPath = (base, file) => {
+          if (base === '.' || base === '') {
+            return file.startsWith('./') ? file : `./${file.replace(/^\//, '')}`;
+          }
+          const normalized = base.endsWith('/') ? base.slice(0, -1) : base;
+          const suffix = file.startsWith('/') ? file : `/${file}`;
+          return `${normalized}${suffix}`;
+        };
+
+        const detectStaticBase = () => {
+          if (window.STATIC_BASE_URL) return window.STATIC_BASE_URL;
+          if (window.location.protocol === 'file:') return '.';
+          if (/:(5500|5501)$/i.test(window.location.host)) return '.';
+          return '/static';
+        };
+
+        const staticBase = detectStaticBase();
+        document.documentElement.dataset.staticBase = staticBase;
+
+        window.__FALLBACK_INSIGHTS__ = [
+          {
+            city: 'Barcelona',
+            focus_area: 'Smart Mobility',
+            insight:
+              'Barcelona está pilotando ônibus elétricos autônomos que atendem rotas noturnas durante eventos culturais, reduzindo emissões e congestionamento.',
+          },
+          {
+            city: 'São Paulo',
+            focus_area: 'Urban Farming',
+            insight:
+              'Lotes vagos viram hubs hidropônicos modulares que abastecem zonas de torcedores com alimentos frescos enquanto sensores reequilibram nutrientes.',
+          },
+          {
+            city: 'Tokyo',
+            focus_area: 'Economia Circular',
+            insight:
+              'Estações de refil gamificadas recompensam reciclagem com créditos de transporte, incentivando deslocamentos de baixo carbono durante exposições.',
+          },
+        ];
+
+        const styleEl = document.getElementById('theme-styles');
+        styleEl.href = joinPath(staticBase, 'styles.css');
+
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = joinPath(staticBase, 'app.js');
+        document.body.appendChild(script);
+      })();
+    </script>
+  </body>
+</html>
